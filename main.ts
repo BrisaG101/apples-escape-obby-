@@ -50,18 +50,99 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         `, playerGreen, -75, 0)
 })
+sprites.onOverlap(SpriteKind.player2, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite, effects.fire, 100)
+    info.changeLifeBy(-1)
+})
 function level () {
     if (diffulty <= 3) {
         lava += 1
         for (let index = 0; index <= 30; index++) {
-            tiles.setTileAt(tiles.getTileLocation(index, lava * -1 + 140), sprites.dungeon.hazardLava1)
-            tiles.setWallAt(tiles.getTileLocation(index, lava * -1 + 140), false)
+            tiles.setTileAt(tiles.getTileLocation(index, lava * -1 + 150), sprites.dungeon.hazardLava1)
+            tiles.setWallAt(tiles.getTileLocation(index, lava * -1 + 150), false)
+        }
+        list = [assets.image`worm`, img`
+            . . . . . . . . . . . f . . . . 
+            . . . . . . . . . . f f . . . . 
+            . . . . . . . . f f f f . . . . 
+            . . . . . f f f f 5 5 f . . . . 
+            . . . f f f 4 5 4 2 2 f f . . . 
+            . . . f 5 4 2 2 2 2 5 5 f . . . 
+            . . f 5 2 2 2 2 4 2 2 5 f f . . 
+            . . f 4 4 2 2 5 5 4 2 5 4 f . . 
+            . f f 4 2 2 2 5 4 4 2 5 4 f . . 
+            . f 2 2 2 4 5 5 4 2 2 5 4 f . . 
+            . f 5 2 2 4 4 2 2 2 2 4 5 f . . 
+            . f f 5 5 2 4 2 4 5 2 2 2 f . . 
+            . . f 4 2 2 4 2 4 5 5 2 2 f . . 
+            . . f f 4 4 5 4 2 4 5 5 f f . . 
+            . . . f f 5 5 4 2 4 f f f . . . 
+            . . . . f f f f f f . . . . . . 
+            `]
+        for (let index = 0; index < 4; index++) {
+            projectile2 = sprites.createProjectileFromSide(list._pickRandom(), 0, 50)
+            projectile2.setKind(SpriteKind.Enemy)
+            projectile2.setPosition(randint(1, 29), 0)
         }
     } else {
-        if (diffulty < 7) {
-        	
+        if (diffulty <= 7) {
+            lava += 1
+            for (let index = 0; index <= 30; index++) {
+                tiles.setTileAt(tiles.getTileLocation(index, lava * -1 + 140), sprites.dungeon.hazardLava1)
+                tiles.setWallAt(tiles.getTileLocation(index, lava * -1 + 140), false)
+            }
+            list = [assets.image`worm`, img`
+                . . . . . . . . . . . f . . . . 
+                . . . . . . . . . . f f . . . . 
+                . . . . . . . . f f f f . . . . 
+                . . . . . f f f f 5 5 f . . . . 
+                . . . f f f 4 5 4 2 2 f f . . . 
+                . . . f 5 4 2 2 2 2 5 5 f . . . 
+                . . f 5 2 2 2 2 4 2 2 5 f f . . 
+                . . f 4 4 2 2 5 5 4 2 5 4 f . . 
+                . f f 4 2 2 2 5 4 4 2 5 4 f . . 
+                . f 2 2 2 4 5 5 4 2 2 5 4 f . . 
+                . f 5 2 2 4 4 2 2 2 2 4 5 f . . 
+                . f f 5 5 2 4 2 4 5 2 2 2 f . . 
+                . . f 4 2 2 4 2 4 5 5 2 2 f . . 
+                . . f f 4 4 5 4 2 4 5 5 f f . . 
+                . . . f f 5 5 4 2 4 f f f . . . 
+                . . . . f f f f f f . . . . . . 
+                `]
+            for (let index = 0; index < 5; index++) {
+                projectile2 = sprites.createProjectileFromSide(list._pickRandom(), 0, 60)
+                projectile2.setKind(SpriteKind.Enemy)
+                projectile2.setPosition(randint(1, 29), 0)
+            }
         } else {
-        	
+            lava += 1
+            for (let index = 0; index <= 30; index++) {
+                tiles.setTileAt(tiles.getTileLocation(index, lava * -1 + 130), sprites.dungeon.hazardLava1)
+                tiles.setWallAt(tiles.getTileLocation(index, lava * -1 + 130), false)
+            }
+            list = [assets.image`worm`, img`
+                . . . . . . . . . . . f . . . . 
+                . . . . . . . . . . f f . . . . 
+                . . . . . . . . f f f f . . . . 
+                . . . . . f f f f 5 5 f . . . . 
+                . . . f f f 4 5 4 2 2 f f . . . 
+                . . . f 5 4 2 2 2 2 5 5 f . . . 
+                . . f 5 2 2 2 2 4 2 2 5 f f . . 
+                . . f 4 4 2 2 5 5 4 2 5 4 f . . 
+                . f f 4 2 2 2 5 4 4 2 5 4 f . . 
+                . f 2 2 2 4 5 5 4 2 2 5 4 f . . 
+                . f 5 2 2 4 4 2 2 2 2 4 5 f . . 
+                . f f 5 5 2 4 2 4 5 2 2 2 f . . 
+                . . f 4 2 2 4 2 4 5 5 2 2 f . . 
+                . . f f 4 4 5 4 2 4 5 5 f f . . 
+                . . . f f 5 5 4 2 4 f f f . . . 
+                . . . . f f f f f f . . . . . . 
+                `]
+            for (let index = 0; index < 6; index++) {
+                projectile2 = sprites.createProjectileFromSide(list._pickRandom(), 0, 70)
+                projectile2.setKind(SpriteKind.Enemy)
+                projectile2.setPosition(randint(1, 29), 0)
+            }
         }
     }
 }
@@ -209,6 +290,26 @@ controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Press
         )
     }
 })
+scene.onOverlapTile(SpriteKind.player2, sprites.dungeon.hazardLava1, function (sprite, location) {
+    if (controller.up.isPressed()) {
+        playerGreen.vy = -50
+    } else {
+        playerGreen.vy = 50
+    }
+    timer.throttle("action", 1000, function () {
+        info.changeLifeBy(-1)
+    })
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
+    if (controller.up.isPressed()) {
+        playerGreen.vy = -50
+    } else {
+        playerGreen.vy = 50
+    }
+    timer.throttle("action", 1000, function () {
+        info.changeLifeBy(-1)
+    })
+})
 scene.onHitWall(SpriteKind.player2, function (sprite, location) {
     if (!(playerRed.isHittingTile(CollisionDirection.Top))) {
         jump2 = 0
@@ -217,6 +318,12 @@ scene.onHitWall(SpriteKind.player2, function (sprite, location) {
         playerRed.vy = 0
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite, effects.fire, 100)
+    info.changeLifeBy(-1)
+})
+let projectile2: Sprite = null
+let list: Image[] = []
 let lava = 0
 let projectile: Sprite = null
 let jump2 = 0
@@ -349,12 +456,12 @@ scene.setBackgroundImage(img`
 tiles.setCurrentTilemap(tilemap`level1`)
 diffulty = game.askForNumber("Level of difficulty 0-9 (0=easy/9=hard)", 1)
 playerGreen = sprites.create(assets.image`green apple`, SpriteKind.Player)
-tiles.placeOnTile(playerGreen, tiles.getTileLocation(27, 5))
+tiles.placeOnTile(playerGreen, tiles.getTileLocation(28, 117))
 controller.moveSprite(playerGreen, 100, 0)
 playerGreen.ay = 300
 playerGreen.setStayInScreen(true)
 playerRed = sprites.create(assets.image`green apple0`, SpriteKind.player2)
-tiles.placeOnTile(playerRed, tiles.getTileLocation(24, 5))
+tiles.placeOnTile(playerRed, tiles.getTileLocation(26, 117))
 controller.player2.moveSprite(playerRed, 100, 0)
 playerRed.ay = 300
 playerRed.setStayInScreen(true)
@@ -379,6 +486,7 @@ let camerasprite = sprites.create(img`
 scene.cameraFollowSprite(camerasprite)
 jump = 0
 jump2 = 0
+info.setLife(10)
 game.onUpdate(function () {
     camerasprite.setPosition((playerGreen.x + playerRed.x) / 2, (playerGreen.y + playerRed.y) / 2)
 })

@@ -9,6 +9,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "green apple0"
     },
+    "image3": {
+        "data": "hwQQABAAAAAAAAAAAAD/DwAAAAAAAD8PAAAAAADwPw8AAAAAAPAzDwAAAAAA/zMPAAAAAP8/Mw8A8P//PzPzD/D/MzMzM/MA8DMzMzPzDwDw8zMz8/8AAD8zMzMPAAAAPzMz8wAAAAA/MzP/AAAAAD8zMw8AAAAAP/PzDwAAAADw//8AAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "worm"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
