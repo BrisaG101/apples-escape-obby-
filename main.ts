@@ -50,6 +50,21 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         `, playerGreen, -75, 0)
 })
+function level () {
+    if (diffulty <= 3) {
+        lava += 1
+        for (let index = 0; index <= 30; index++) {
+            tiles.setTileAt(tiles.getTileLocation(index, lava * -1 + 140), sprites.dungeon.hazardLava1)
+            tiles.setWallAt(tiles.getTileLocation(index, lava * -1 + 140), false)
+        }
+    } else {
+        if (diffulty < 7) {
+        	
+        } else {
+        	
+        }
+    }
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (jump < 2) {
         jump += 1
@@ -202,11 +217,13 @@ scene.onHitWall(SpriteKind.player2, function (sprite, location) {
         playerRed.vy = 0
     }
 })
+let lava = 0
 let projectile: Sprite = null
 let jump2 = 0
 let jump = 0
 let playerRed: Sprite = null
 let playerGreen: Sprite = null
+let diffulty = 0
 scene.setBackgroundImage(img`
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
@@ -330,7 +347,7 @@ scene.setBackgroundImage(img`
     ee88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     `)
 tiles.setCurrentTilemap(tilemap`level1`)
-let diffulty = game.askForNumber("Level of difficulty 0-10 (0=easy/10=hard)", 2)
+diffulty = game.askForNumber("Level of difficulty 0-9 (0=easy/9=hard)", 1)
 playerGreen = sprites.create(assets.image`green apple`, SpriteKind.Player)
 tiles.placeOnTile(playerGreen, tiles.getTileLocation(27, 5))
 controller.moveSprite(playerGreen, 100, 0)
@@ -362,9 +379,9 @@ let camerasprite = sprites.create(img`
 scene.cameraFollowSprite(camerasprite)
 jump = 0
 jump2 = 0
-if (true) {
-	
-}
 game.onUpdate(function () {
     camerasprite.setPosition((playerGreen.x + playerRed.x) / 2, (playerGreen.y + playerRed.y) / 2)
+})
+game.onUpdateInterval(1000, function () {
+    level()
 })
