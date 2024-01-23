@@ -1,5 +1,5 @@
 {
-    "name": "Apples escape obby ",
+    "name": "Apples escape lava obby ",
     "description": "",
     "dependencies": {
         "device": "*",
@@ -22,7 +22,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.12.41",
+        "target": "1.12.46",
         "targetId": "arcade"
     },
     "supportedTargets": [

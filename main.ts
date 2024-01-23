@@ -54,94 +54,23 @@ sprites.onOverlap(SpriteKind.player2, SpriteKind.Enemy, function (sprite, otherS
     sprites.destroy(otherSprite, effects.fire, 100)
     info.changeLifeBy(-1)
 })
-function level () {
-    if (diffulty <= 3) {
-        lava += 1
+function level (num: number) {
+    lava += 1
+    if (num <= 3) {
         for (let index = 0; index <= 30; index++) {
-            tiles.setTileAt(tiles.getTileLocation(index, lava * -1 + 150), sprites.dungeon.hazardLava1)
-            tiles.setWallAt(tiles.getTileLocation(index, lava * -1 + 150), false)
-        }
-        list = [assets.image`worm`, img`
-            . . . . . . . . . . . f . . . . 
-            . . . . . . . . . . f f . . . . 
-            . . . . . . . . f f f f . . . . 
-            . . . . . f f f f 5 5 f . . . . 
-            . . . f f f 4 5 4 2 2 f f . . . 
-            . . . f 5 4 2 2 2 2 5 5 f . . . 
-            . . f 5 2 2 2 2 4 2 2 5 f f . . 
-            . . f 4 4 2 2 5 5 4 2 5 4 f . . 
-            . f f 4 2 2 2 5 4 4 2 5 4 f . . 
-            . f 2 2 2 4 5 5 4 2 2 5 4 f . . 
-            . f 5 2 2 4 4 2 2 2 2 4 5 f . . 
-            . f f 5 5 2 4 2 4 5 2 2 2 f . . 
-            . . f 4 2 2 4 2 4 5 5 2 2 f . . 
-            . . f f 4 4 5 4 2 4 5 5 f f . . 
-            . . . f f 5 5 4 2 4 f f f . . . 
-            . . . . f f f f f f . . . . . . 
-            `]
-        for (let index = 0; index < 4; index++) {
-            projectile2 = sprites.createProjectileFromSide(list._pickRandom(), 0, 50)
-            projectile2.setKind(SpriteKind.Enemy)
-            projectile2.setPosition(randint(1, 29), 0)
+            tiles.setTileAt(tiles.getTileLocation(index, lava - 125), sprites.dungeon.hazardLava1)
+            tiles.setWallAt(tiles.getTileLocation(index, lava - 125), false)
         }
     } else {
-        if (diffulty <= 7) {
-            lava += 1
+        if (num <= 7) {
             for (let index = 0; index <= 30; index++) {
-                tiles.setTileAt(tiles.getTileLocation(index, lava * -1 + 140), sprites.dungeon.hazardLava1)
-                tiles.setWallAt(tiles.getTileLocation(index, lava * -1 + 140), false)
-            }
-            list = [assets.image`worm`, img`
-                . . . . . . . . . . . f . . . . 
-                . . . . . . . . . . f f . . . . 
-                . . . . . . . . f f f f . . . . 
-                . . . . . f f f f 5 5 f . . . . 
-                . . . f f f 4 5 4 2 2 f f . . . 
-                . . . f 5 4 2 2 2 2 5 5 f . . . 
-                . . f 5 2 2 2 2 4 2 2 5 f f . . 
-                . . f 4 4 2 2 5 5 4 2 5 4 f . . 
-                . f f 4 2 2 2 5 4 4 2 5 4 f . . 
-                . f 2 2 2 4 5 5 4 2 2 5 4 f . . 
-                . f 5 2 2 4 4 2 2 2 2 4 5 f . . 
-                . f f 5 5 2 4 2 4 5 2 2 2 f . . 
-                . . f 4 2 2 4 2 4 5 5 2 2 f . . 
-                . . f f 4 4 5 4 2 4 5 5 f f . . 
-                . . . f f 5 5 4 2 4 f f f . . . 
-                . . . . f f f f f f . . . . . . 
-                `]
-            for (let index = 0; index < 5; index++) {
-                projectile2 = sprites.createProjectileFromSide(list._pickRandom(), 0, 60)
-                projectile2.setKind(SpriteKind.Enemy)
-                projectile2.setPosition(randint(1, 29), 0)
+                tiles.setTileAt(tiles.getTileLocation(index, lava - 125), sprites.dungeon.hazardLava1)
+                tiles.setWallAt(tiles.getTileLocation(index, lava - 125), false)
             }
         } else {
-            lava += 1
             for (let index = 0; index <= 30; index++) {
-                tiles.setTileAt(tiles.getTileLocation(index, lava * -1 + 130), sprites.dungeon.hazardLava1)
-                tiles.setWallAt(tiles.getTileLocation(index, lava * -1 + 130), false)
-            }
-            list = [assets.image`worm`, img`
-                . . . . . . . . . . . f . . . . 
-                . . . . . . . . . . f f . . . . 
-                . . . . . . . . f f f f . . . . 
-                . . . . . f f f f 5 5 f . . . . 
-                . . . f f f 4 5 4 2 2 f f . . . 
-                . . . f 5 4 2 2 2 2 5 5 f . . . 
-                . . f 5 2 2 2 2 4 2 2 5 f f . . 
-                . . f 4 4 2 2 5 5 4 2 5 4 f . . 
-                . f f 4 2 2 2 5 4 4 2 5 4 f . . 
-                . f 2 2 2 4 5 5 4 2 2 5 4 f . . 
-                . f 5 2 2 4 4 2 2 2 2 4 5 f . . 
-                . f f 5 5 2 4 2 4 5 2 2 2 f . . 
-                . . f 4 2 2 4 2 4 5 5 2 2 f . . 
-                . . f f 4 4 5 4 2 4 5 5 f f . . 
-                . . . f f 5 5 4 2 4 f f f . . . 
-                . . . . f f f f f f . . . . . . 
-                `]
-            for (let index = 0; index < 6; index++) {
-                projectile2 = sprites.createProjectileFromSide(list._pickRandom(), 0, 70)
-                projectile2.setKind(SpriteKind.Enemy)
-                projectile2.setPosition(randint(1, 29), 0)
+                tiles.setTileAt(tiles.getTileLocation(index, lava - 125), sprites.dungeon.hazardLava1)
+                tiles.setWallAt(tiles.getTileLocation(index, lava - 125), false)
             }
         }
     }
@@ -322,15 +251,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     sprites.destroy(otherSprite, effects.fire, 100)
     info.changeLifeBy(-1)
 })
-let projectile2: Sprite = null
-let list: Image[] = []
 let lava = 0
 let projectile: Sprite = null
 let jump2 = 0
 let jump = 0
 let playerRed: Sprite = null
 let playerGreen: Sprite = null
-let diffulty = 0
 scene.setBackgroundImage(img`
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
@@ -454,7 +380,7 @@ scene.setBackgroundImage(img`
     ee88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     `)
 tiles.setCurrentTilemap(tilemap`level1`)
-diffulty = game.askForNumber("Level of difficulty 0-9 (0=easy/9=hard)", 1)
+level(game.askForNumber("Level of difficulty 0-9 (0=easy/9=hard)", 1))
 playerGreen = sprites.create(assets.image`green apple`, SpriteKind.Player)
 tiles.placeOnTile(playerGreen, tiles.getTileLocation(28, 117))
 controller.moveSprite(playerGreen, 100, 0)
@@ -487,9 +413,10 @@ scene.cameraFollowSprite(camerasprite)
 jump = 0
 jump2 = 0
 info.setLife(10)
+info.startCountdown(600)
 game.onUpdate(function () {
     camerasprite.setPosition((playerGreen.x + playerRed.x) / 2, (playerGreen.y + playerRed.y) / 2)
 })
 game.onUpdateInterval(1000, function () {
-    level()
+    level(1)
 })
