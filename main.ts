@@ -441,11 +441,6 @@ info.setLife(20)
 info.startCountdown(600)
 game.onUpdate(function () {
     camerasprite.setPosition((playerGreen.x + playerRed.x) / 2, (playerGreen.y + playerRed.y) / 2)
-    if (playerGreen.tileKindAt(TileDirection.Bottom, sprites.builtin.forestTiles6) && playerRed.tileKindAt(TileDirection.Bottom, sprites.builtin.forestTiles6)) {
-        game.setGameOverMessage(true, "YOU WON THE APPLE ESCAPE LAVA OBBY!")
-        game.setGameOverEffect(true, effects.confetti)
-        game.gameOver(true)
-    }
 })
 game.onUpdateInterval(2000, function () {
     enemyLevel(1)
