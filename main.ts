@@ -445,7 +445,7 @@ info.setLife(20)
 info.startCountdown(600)
 game.onUpdate(function () {
     camerasprite.setPosition((playerGreen.x + playerRed.x) / 2, (playerGreen.y + playerRed.y) / 2)
-    if (playerGreen.tileKindAt(TileDirection.Bottom, sprites.builtin.forestTiles6) && playerRed.tileKindAt(TileDirection.Bottom, sprites.builtin.forestTiles6)) {
+    if (playerGreen.tileKindAt(TileDirection.Bottom, sprites.castle.tileDarkGrass3) && playerRed.tileKindAt(TileDirection.Bottom, sprites.castle.tileDarkGrass3)) {
         game.setGameOverMessage(true, "YOU WON APPLE LAVA OBBY!")
         game.setGameOverEffect(true, effects.confetti)
         game.gameOver(true)
