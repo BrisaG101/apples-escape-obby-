@@ -74,6 +74,7 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
 sprites.onOverlap(SpriteKind.player2, SpriteKind.Enemy, function (sprite, otherSprite) {
     sprites.destroy(otherSprite, effects.fire, 100)
     info.changeLifeBy(-1)
+    music.play(music.melodyPlayable(music.smallCrash), music.PlaybackMode.UntilDone)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (jump < 2) {
@@ -146,6 +147,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         false
         )
     }
+    music.play(music.melodyPlayable(music.magicWand), music.PlaybackMode.UntilDone)
 })
 controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
     if (jump2 < 2) {
@@ -218,6 +220,7 @@ controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Press
         false
         )
     }
+    music.play(music.melodyPlayable(music.magicWand), music.PlaybackMode.UntilDone)
 })
 scene.onOverlapTile(SpriteKind.player2, sprites.dungeon.hazardLava1, function (sprite, location) {
     if (controller.player2.isPressed(ControllerButton.Up)) {
@@ -273,6 +276,7 @@ scene.onHitWall(SpriteKind.player2, function (sprite, location) {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     sprites.destroy(otherSprite, effects.fire, 100)
     info.changeLifeBy(-1)
+    music.play(music.melodyPlayable(music.smallCrash), music.PlaybackMode.UntilDone)
 })
 let lava = 0
 let projectile2: Sprite = null
@@ -441,6 +445,11 @@ info.setLife(20)
 info.startCountdown(600)
 game.onUpdate(function () {
     camerasprite.setPosition((playerGreen.x + playerRed.x) / 2, (playerGreen.y + playerRed.y) / 2)
+    if (playerGreen.tileKindAt(TileDirection.Bottom, sprites.builtin.forestTiles6) && playerRed.tileKindAt(TileDirection.Bottom, sprites.builtin.forestTiles6)) {
+        game.setGameOverMessage(true, "YOU WON APPLE LAVA OBBY!")
+        game.setGameOverEffect(true, effects.confetti)
+        game.gameOver(true)
+    }
 })
 game.onUpdateInterval(2000, function () {
     enemyLevel(1)
