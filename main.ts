@@ -437,6 +437,7 @@ let camerasprite = sprites.create(img`
 scene.cameraFollowSprite(camerasprite)
 jump = 0
 jump2 = 0
+scene.cameraShake(8, 1000)
 info.setLife(20)
 info.startCountdown(600)
 game.onUpdate(function () {
