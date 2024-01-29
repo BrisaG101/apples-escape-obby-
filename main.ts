@@ -439,6 +439,7 @@ jump = 0
 jump2 = 0
 scene.cameraShake(8, 1000)
 info.setLife(20)
+info.startCountdown(600)
 game.onUpdate(function () {
     camerasprite.setPosition((playerGreen.x + playerRed.x) / 2, (playerGreen.y + playerRed.y) / 2)
     if (playerGreen.tileKindAt(TileDirection.Bottom, sprites.castle.tileDarkGrass3) && playerRed.tileKindAt(TileDirection.Bottom, sprites.castle.tileDarkGrass3)) {
