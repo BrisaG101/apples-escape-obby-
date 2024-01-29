@@ -61,6 +61,7 @@ function enemyLevel (num: number) {
         }
     }
 }
+// advice by teacher
 scene.onHitWall(SpriteKind.Player, function (sprite, location) {
     if (!(playerGreen.isHittingTile(CollisionDirection.Top))) {
         jump = 0
@@ -145,6 +146,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         )
     }
 })
+// advice by teacher
 controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
     if (jump2 < 2) {
         jump2 += 1
@@ -270,6 +272,9 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sp
         info.changeLifeBy(-1)
     })
 })
+/**
+ * I got most of the code for the lava to flow upwards made by Eden264 in their lava project https://arcade.makecode.com/35572-32924-30681-92459
+ */
 let lava = 0
 let projectile2: Sprite = null
 let enemyList: Image[] = []
@@ -436,6 +441,7 @@ jump2 = 0
 scene.cameraShake(8, 1000)
 info.setLife(20)
 game.onUpdate(function () {
+    // advice by teacher
     camerasprite.setPosition((playerGreen.x + playerRed.x) / 2, (playerGreen.y + playerRed.y) / 2)
     if (playerGreen.tileKindAt(TileDirection.Bottom, sprites.castle.tileDarkGrass3) && playerRed.tileKindAt(TileDirection.Bottom, sprites.castle.tileDarkGrass3)) {
         game.setGameOverMessage(true, "YOU WON APPLE LAVA OBBY!")
