@@ -3,7 +3,6 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "multiplayer": "*",
         "animation": "*",
         "Timers": "github:microsoft/arcade-timers#v1.1.0"
     },
@@ -22,7 +21,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.12.46",
+        "target": "1.12.47",
         "targetId": "arcade"
     },
     "supportedTargets": [
